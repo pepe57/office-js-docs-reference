@@ -1841,7 +1841,7 @@ excel,Excel.ColumnProperties,N/A,Interface,Good,false
 excel,Excel.ColumnProperties,"address",Property,Great,false
 excel,Excel.ColumnProperties,"addressLocal",Property,Great,false
 excel,Excel.ColumnProperties,"columnIndex",Property,Great,false
-excel,Excel.ColumnPropertiesLoadOptions,N/A,Interface,Great,false
+excel,Excel.ColumnPropertiesLoadOptions,N/A,Interface,Good,false
 excel,Excel.ColumnPropertiesLoadOptions,"columnHidden",Property,Excellent,false
 excel,Excel.ColumnPropertiesLoadOptions,"columnIndex",Property,Excellent,false
 excel,Excel.ColumnPropertiesLoadOptions,"format",Property,Excellent,false
