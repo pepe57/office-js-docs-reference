@@ -1,0 +1,30 @@
+### YamlMime:TSType
+name: PowerPoint.SensitivityLabelTryUpdateOptions
+uid: powerpoint!PowerPoint.SensitivityLabelTryUpdateOptions:interface
+package: powerpoint!
+fullName: PowerPoint.SensitivityLabelTryUpdateOptions
+summary: Provides options for `SensitivityLabel.tryToUpdate`<!-- -->.
+remarks: |-
+  [API set: PowerPointApi BETA (PREVIEW ONLY)](/javascript/api/requirement-sets/powerpoint/powerpoint-api-requirement-sets)
+
+  #### Used by
+
+  - [PowerPoint.SensitivityLabel](/javascript/api/powerpoint/powerpoint.sensitivitylabel): [tryToUpdate](/javascript/api/powerpoint/powerpoint.sensitivitylabel#powerpoint-powerpoint-sensitivitylabel-trytoupdate-member(1))
+
+isPreview: true
+isDeprecated: false
+type: interface
+properties:
+  - name: abacAttributes
+    uid: powerpoint!PowerPoint.SensitivityLabelTryUpdateOptions#abacAttributes:member
+    package: powerpoint!
+    fullName: abacAttributes
+    summary: If provided, specifies the attribute-based access control (ABAC) attributes to apply with the label. Must be omitted or empty for labels that are not ABAC-enabled; otherwise the update result has a `status` of `SensitivityLabelUpdateStatus.abacAttributesNotAllowed`<!-- -->. Required when the target label is ABAC-enabled and `SensitivityLabelDetails.isAbacAttributesRequired` is `true`<!-- -->.
+    remarks: '[API set: PowerPointApi BETA (PREVIEW ONLY)](/javascript/api/requirement-sets/powerpoint/powerpoint-api-requirement-sets)'
+
+    isPreview: true
+    isDeprecated: false
+    syntax:
+      content: 'abacAttributes?: PowerPoint.SensitivityLabelAbacAttribute[];'
+      return:
+        type: <xref uid="powerpoint!PowerPoint.SensitivityLabelAbacAttribute:interface" />[]

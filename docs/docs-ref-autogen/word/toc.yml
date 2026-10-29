@@ -858,15 +858,17 @@ items:
           - name: SensitivityLabel
             uid: word!Word.SensitivityLabel:class
           - name: SensitivityLabelAbacAttribute
-            uid: word!Word.SensitivityLabelAbacAttribute:class
+            uid: word!Word.SensitivityLabelAbacAttribute:interface
           - name: SensitivityLabelAbacAttributeValue
-            uid: word!Word.SensitivityLabelAbacAttributeValue:class
+            uid: word!Word.SensitivityLabelAbacAttributeValue:interface
           - name: SensitivityLabelDetails
             uid: word!Word.SensitivityLabelDetails:class
           - name: SensitivityLabelDetailsCollection
             uid: word!Word.SensitivityLabelDetailsCollection:class
           - name: SensitivityLabelsCatalog
             uid: word!Word.SensitivityLabelsCatalog:class
+          - name: SensitivityLabelTryUpdateOptions
+            uid: word!Word.SensitivityLabelTryUpdateOptions:interface
           - name: Setting
             uid: word!Word.Setting:class
           - name: SettingCollection

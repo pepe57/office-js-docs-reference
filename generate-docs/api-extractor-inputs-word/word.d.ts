@@ -1171,6 +1171,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -1202,6 +1204,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.1]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted.
          * @param insertLocation - The value must be `replace`, `start`, or `end`.
@@ -5039,6 +5043,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -5070,6 +5076,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.1]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted in to the content control.
          * @param insertLocation - The value must be `replace`, `start`, or `end`. `replace` cannot be used with `richTextTable` and `richTextTableRow` content controls.
@@ -7886,6 +7894,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -8628,6 +8638,8 @@ export declare namespace Word {
          * [Api set: WordApiHiddenDocument 1.5]
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
+         *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * Document settings aren't preserved when inserting a document.
          *
@@ -10338,6 +10350,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -10369,6 +10383,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.2]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted.
          * @param insertLocation - The value must be `before` or `after`.
@@ -12902,6 +12918,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -12953,6 +12971,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.1]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted in the paragraph.
          * @param insertLocation - The value must be `replace`, `start`, or `end`.
@@ -14381,6 +14401,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -14441,6 +14463,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.1]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted.
          * @param insertLocation - The value must be `replace`, `start`, `end`, `before`, or `after`.
@@ -15169,6 +15193,23 @@ export declare namespace Word {
         toJSON(): Word.Interfaces.SectionCollectionData;
     }
     /**
+     * Provides options for `SensitivityLabel.tryToUpdate`.
+     *
+     * @remarks
+     * [Api set: WordApi BETA (PREVIEW ONLY)]
+     * @beta
+     */
+    export interface SensitivityLabelTryUpdateOptions {
+        /**
+         * If provided, specifies the ABAC attributes to apply with the label.
+         *
+         * @remarks
+         * [Api set: WordApi BETA (PREVIEW ONLY)]
+         * @beta
+         */
+        abacAttributes?: SensitivityLabelAbacAttribute[];
+    }
+    /**
      * Represents the sensitivity label on the document.
      *
      * @remarks
@@ -15187,16 +15228,16 @@ export declare namespace Word {
          */
         getCurrentOrNullObject(): Word.SensitivityLabelDetails;
         /**
-         * Try to update to the provided sensitivity label on the document for the user.
+         * Tries to update to the provided sensitivity label on the document for the user.
          *
          * @remarks
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          *
-         * @param LabelId - The label information that needs to be set on the document.
-         * @param Justification - Optional. The justification of changing the label.
+         * @param LabelId - The ID of the label to apply.
+         * @param Options - Optional. Additional inputs such as ABAC attributes.
          */
-        tryToUpdate(LabelId: string, Justification?: string): OfficeExtension.ClientResult<Word.SensitivityLabelUpdateResult>;
+        tryToUpdate(LabelId: string, Options?: Word.SensitivityLabelTryUpdateOptions): OfficeExtension.ClientResult<Word.SensitivityLabelUpdateResult>;
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
          *
@@ -15239,13 +15280,21 @@ export declare namespace Word {
         /** The request context associated with the object. This connects the add-in's process to the Office host application's process. */
         context: RequestContext;
         /**
+         * Gets the labeling capabilities of the sensitivity label catalog in Word.
+         *
+         * @remarks
+         * [Api set: WordApi BETA (PREVIEW ONLY)]
+         * @beta
+         */
+        readonly getLabelingCapabilities: Word.LabelingCapability[];
+        /**
          * Gets the labeling capability status of the sensitivity label catalog in Word.
          *
          * @remarks
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly getLabelingCapability: Word.LabelingCapability | "NoLicense" | "LabelingDisabled" | "LabelingPolicyNotFound" | "LabelingEnabled";
+        readonly getLabelingCapability: Word.LabelingCapability | "NoLicense" | "LabelingDisabled" | "LabelingPolicyNotFound" | "LabelingEnabled" | "AttributeBasedAccessControlEnabled";
         /**
          * Gets the attribute-based access control (ABAC) attributes available for sensitivity labels.
          *
@@ -15308,9 +15357,7 @@ export declare namespace Word {
      * [Api set: WordApi BETA (PREVIEW ONLY)]
      * @beta
      */
-    export class SensitivityLabelAbacAttributeValue extends OfficeExtension.ClientObject {
-        /** The request context associated with the object. This connects the add-in's process to the Office host application's process. */
-        context: RequestContext;
+    export interface SensitivityLabelAbacAttributeValue {
         /**
          * The display name of the ABAC attribute value.
          *
@@ -15318,7 +15365,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly displayName: string;
+        displayName: string;
         /**
          * The display order of the ABAC attribute value.
          *
@@ -15326,7 +15373,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly displayOrder: number;
+        displayOrder: number;
         /**
          * The unique identifier of the ABAC attribute value.
          *
@@ -15334,7 +15381,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly id: string;
+        id: string;
         /**
          * Indicates whether the ABAC attribute value is active.
          *
@@ -15342,33 +15389,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly isActive: boolean;
-        /**
-         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
-         *
-         * @param options - Provides options for which properties of the object to load.
-         */
-        load(options?: Word.Interfaces.SensitivityLabelAbacAttributeValueLoadOptions): Word.SensitivityLabelAbacAttributeValue;
-        /**
-         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
-         *
-         * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
-         */
-        load(propertyNames?: string | string[]): Word.SensitivityLabelAbacAttributeValue;
-        /**
-         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
-         *
-         * @param propertyNamesAndPaths - `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-         */
-        load(propertyNamesAndPaths?: {
-            select?: string;
-            expand?: string;
-        }): Word.SensitivityLabelAbacAttributeValue;
-        /**
-        * Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to `JSON.stringify()`. (`JSON.stringify`, in turn, calls the `toJSON` method of the object that's passed to it.)
-        * Whereas the original `Word.SensitivityLabelAbacAttributeValue` object is an API object, the `toJSON` method returns a plain JavaScript object (typed as `Word.Interfaces.SensitivityLabelAbacAttributeValueData`) that contains shallow copies of any loaded child properties from the original object.
-        */
-        toJSON(): Word.Interfaces.SensitivityLabelAbacAttributeValueData;
+        isActive: boolean;
     }
     /**
      * Represents an attribute-based access control (ABAC) attribute for sensitivity labels.
@@ -15377,9 +15398,7 @@ export declare namespace Word {
      * [Api set: WordApi BETA (PREVIEW ONLY)]
      * @beta
      */
-    export class SensitivityLabelAbacAttribute extends OfficeExtension.ClientObject {
-        /** The request context associated with the object. This connects the add-in's process to the Office host application's process. */
-        context: RequestContext;
+    export interface SensitivityLabelAbacAttribute {
         /**
          * The data type of values for this ABAC attribute.
          *
@@ -15387,7 +15406,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly dataType: Word.SensitivityLabelAbacAttributeDataType | "Unknown" | "StringValue" | "BooleanValue" | "NumberValue" | "DateValue";
+        dataType: Word.SensitivityLabelAbacAttributeDataType | "Unknown" | "StringValue" | "BooleanValue" | "NumberValue" | "DateValue";
         /**
          * The display name of the ABAC attribute.
          *
@@ -15395,7 +15414,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly displayName: string;
+        displayName: string;
         /**
          * The display order of the ABAC attribute.
          *
@@ -15403,7 +15422,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly displayOrder: number;
+        displayOrder: number;
         /**
          * Indicates whether the ABAC attribute is active.
          *
@@ -15411,7 +15430,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly isActive: boolean;
+        isActive: boolean;
         /**
          * Indicates whether the ABAC attribute can have multiple values.
          *
@@ -15419,7 +15438,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly isMultiValued: boolean;
+        isMultiValued: boolean;
         /**
          * The values available for the ABAC attribute.
          *
@@ -15427,33 +15446,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        readonly values: Word.SensitivityLabelAbacAttributeValue[];
-        /**
-         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
-         *
-         * @param options - Provides options for which properties of the object to load.
-         */
-        load(options?: Word.Interfaces.SensitivityLabelAbacAttributeLoadOptions): Word.SensitivityLabelAbacAttribute;
-        /**
-         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
-         *
-         * @param propertyNames - A comma-delimited string or an array of strings that specify the properties to load.
-         */
-        load(propertyNames?: string | string[]): Word.SensitivityLabelAbacAttribute;
-        /**
-         * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
-         *
-         * @param propertyNamesAndPaths - `propertyNamesAndPaths.select` is a comma-delimited string that specifies the properties to load, and `propertyNamesAndPaths.expand` is a comma-delimited string that specifies the navigation properties to load.
-         */
-        load(propertyNamesAndPaths?: {
-            select?: string;
-            expand?: string;
-        }): Word.SensitivityLabelAbacAttribute;
-        /**
-        * Overrides the JavaScript `toJSON()` method in order to provide more useful output when an API object is passed to `JSON.stringify()`. (`JSON.stringify`, in turn, calls the `toJSON` method of the object that's passed to it.)
-        * Whereas the original `Word.SensitivityLabelAbacAttribute` object is an API object, the `toJSON` method returns a plain JavaScript object (typed as `Word.Interfaces.SensitivityLabelAbacAttributeData`) that contains shallow copies of any loaded child properties from the original object.
-        */
-        toJSON(): Word.Interfaces.SensitivityLabelAbacAttributeData;
+        values: Word.SensitivityLabelAbacAttributeValue[];
     }
     /**
      * Represents the collection of {@link Word.SensitivityLabelDetails} objects.
@@ -20735,6 +20728,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApiDesktop 1.2]
+         *
+         * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
          */
         readonly body: Word.Body;
         /**
@@ -21456,6 +21451,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApiDesktop 1.2]
+         *
+         * Note: Getting this property doesn't modify the document. Unlike the `body` property of {@link Word.Shape}, it doesn't create a text story on a shape that doesn't already contain text.
          */
         readonly hasText: boolean;
         /**
@@ -24716,6 +24713,24 @@ export declare namespace Word {
          */
         contentControlAdded = "ContentControlAdded",
         /**
+         * AnnotationAdded represents the event an annotation has been added to the document.
+         * @remarks
+         * [Api set: WordApiOnline 1.1]
+         */
+        annotationAdded = "AnnotationAdded",
+        /**
+         * AnnotationChanged represents the event an annotation has been updated in the document.
+         * @remarks
+         * [Api set: WordApiOnline 1.1]
+         */
+        annotationChanged = "AnnotationChanged",
+        /**
+         * AnnotationDeleted represents the event an annotation has been deleted from the document.
+         * @remarks
+         * [Api set: WordApiOnline 1.1]
+         */
+        annotationDeleted = "AnnotationDeleted",
+        /**
          * Represents that one or more comments were deleted.
          * @remarks
          * [Api set: WordApi BETA (PREVIEW ONLY)]
@@ -24844,7 +24859,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -24873,7 +24888,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -24902,7 +24917,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -24931,7 +24946,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -24960,7 +24975,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -25075,7 +25090,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -25111,7 +25126,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.6]
          */
-        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the unique IDs of the involved paragraphs. IDs are in standard 8-4-4-4-12 GUID format without curly braces and differ across sessions and coauthors.
          *
@@ -25140,7 +25155,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.6]
          */
-        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the unique IDs of the involved paragraphs. IDs are in standard 8-4-4-4-12 GUID format without curly braces and differ across sessions and coauthors.
          *
@@ -25169,7 +25184,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.6]
          */
-        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the unique IDs of the involved paragraphs. IDs are in standard 8-4-4-4-12 GUID format without curly braces and differ across sessions and coauthors.
          *
@@ -25217,7 +25232,7 @@ export declare namespace Word {
          * [Api set: WordApi BETA (PREVIEW ONLY)]
          * @beta
          */
-        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "CommentDeleted" | "CommentSelected" | "CommentDeselected" | "CommentChanged" | "CommentAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
     }
     /**
      * A structure for the ID and reply IDs of this comment.
@@ -47982,6 +47997,13 @@ export declare namespace Word {
          * @beta
          */
         labelingEnabled = "LabelingEnabled",
+        /**
+         * Attribute-based access control is enabled for sensitivity labeling.
+         * @remarks
+         * [Api set: WordApi BETA (PREVIEW ONLY)]
+         * @beta
+         */
+        attributeBasedAccessControlEnabled = "AttributeBasedAccessControlEnabled",
     }
     /**
      * Specifies the type of protection applied by a sensitivity label.
@@ -51987,6 +52009,8 @@ export declare namespace Word {
             *
             * @remarks
             * [Api set: WordApiDesktop 1.2]
+            *
+            * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
             */
             body?: Word.Interfaces.BodyUpdateData;
             /**
@@ -58273,99 +58297,21 @@ export declare namespace Word {
         /** An interface describing the data returned by calling `sensitivityLabelsCatalog.toJSON()`. */
         export interface SensitivityLabelsCatalogData {
             /**
+             * Gets the labeling capabilities of the sensitivity label catalog in Word.
+             *
+             * @remarks
+             * [Api set: WordApi BETA (PREVIEW ONLY)]
+             * @beta
+             */
+            getLabelingCapabilities?: Word.LabelingCapability[];
+            /**
              * Gets the labeling capability status of the sensitivity label catalog in Word.
              *
              * @remarks
              * [Api set: WordApi BETA (PREVIEW ONLY)]
              * @beta
              */
-            getLabelingCapability?: Word.LabelingCapability | "NoLicense" | "LabelingDisabled" | "LabelingPolicyNotFound" | "LabelingEnabled";
-        }
-        /** An interface describing the data returned by calling `sensitivityLabelAbacAttributeValue.toJSON()`. */
-        export interface SensitivityLabelAbacAttributeValueData {
-            /**
-             * The display name of the ABAC attribute value.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            displayName?: string;
-            /**
-             * The display order of the ABAC attribute value.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            displayOrder?: number;
-            /**
-             * The unique identifier of the ABAC attribute value.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            id?: string;
-            /**
-             * Indicates whether the ABAC attribute value is active.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            isActive?: boolean;
-        }
-        /** An interface describing the data returned by calling `sensitivityLabelAbacAttribute.toJSON()`. */
-        export interface SensitivityLabelAbacAttributeData {
-            /**
-             * The data type of values for this ABAC attribute.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            dataType?: Word.SensitivityLabelAbacAttributeDataType | "Unknown" | "StringValue" | "BooleanValue" | "NumberValue" | "DateValue";
-            /**
-             * The display name of the ABAC attribute.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            displayName?: string;
-            /**
-             * The display order of the ABAC attribute.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            displayOrder?: number;
-            /**
-             * Indicates whether the ABAC attribute is active.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            isActive?: boolean;
-            /**
-             * Indicates whether the ABAC attribute can have multiple values.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            isMultiValued?: boolean;
-            /**
-             * The values available for the ABAC attribute.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            values?: Word.SensitivityLabelAbacAttributeValue[];
+            getLabelingCapability?: Word.LabelingCapability | "NoLicense" | "LabelingDisabled" | "LabelingPolicyNotFound" | "LabelingEnabled" | "AttributeBasedAccessControlEnabled";
         }
         /** An interface describing the data returned by calling `sensitivityLabelDetailsCollection.toJSON()`. */
         export interface SensitivityLabelDetailsCollectionData {
@@ -60068,6 +60014,8 @@ export declare namespace Word {
             *
             * @remarks
             * [Api set: WordApiDesktop 1.2]
+            *
+            * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
             */
             body?: Word.Interfaces.BodyData;
             /**
@@ -60378,6 +60326,8 @@ export declare namespace Word {
              *
              * @remarks
              * [Api set: WordApiDesktop 1.2]
+             *
+             * Note: Getting this property doesn't modify the document. Unlike the `body` property of {@link Word.Shape}, it doesn't create a text story on a shape that doesn't already contain text.
              */
             hasText?: boolean;
             /**
@@ -69771,6 +69721,14 @@ export declare namespace Word {
              */
             $all?: boolean;
             /**
+             * Gets the labeling capabilities of the sensitivity label catalog in Word.
+             *
+             * @remarks
+             * [Api set: WordApi BETA (PREVIEW ONLY)]
+             * @beta
+             */
+            getLabelingCapabilities?: boolean;
+            /**
              * Gets the labeling capability status of the sensitivity label catalog in Word.
              *
              * @remarks
@@ -69778,112 +69736,6 @@ export declare namespace Word {
              * @beta
              */
             getLabelingCapability?: boolean;
-        }
-        /**
-         * Represents a single attribute-based access control (ABAC) attribute value for a sensitivity label.
-         *
-         * @remarks
-         * [Api set: WordApi BETA (PREVIEW ONLY)]
-         * @beta
-         */
-        export interface SensitivityLabelAbacAttributeValueLoadOptions {
-            /**
-              Specifying `$all` for the load options loads all the scalar properties (such as `Range.address`) but not the navigational properties (such as `Range.format.fill.color`).
-             */
-            $all?: boolean;
-            /**
-             * The display name of the ABAC attribute value.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            displayName?: boolean;
-            /**
-             * The display order of the ABAC attribute value.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            displayOrder?: boolean;
-            /**
-             * The unique identifier of the ABAC attribute value.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            id?: boolean;
-            /**
-             * Indicates whether the ABAC attribute value is active.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            isActive?: boolean;
-        }
-        /**
-         * Represents an attribute-based access control (ABAC) attribute for sensitivity labels.
-         *
-         * @remarks
-         * [Api set: WordApi BETA (PREVIEW ONLY)]
-         * @beta
-         */
-        export interface SensitivityLabelAbacAttributeLoadOptions {
-            /**
-              Specifying `$all` for the load options loads all the scalar properties (such as `Range.address`) but not the navigational properties (such as `Range.format.fill.color`).
-             */
-            $all?: boolean;
-            /**
-             * The data type of values for this ABAC attribute.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            dataType?: boolean;
-            /**
-             * The display name of the ABAC attribute.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            displayName?: boolean;
-            /**
-             * The display order of the ABAC attribute.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            displayOrder?: boolean;
-            /**
-             * Indicates whether the ABAC attribute is active.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            isActive?: boolean;
-            /**
-             * Indicates whether the ABAC attribute can have multiple values.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            isMultiValued?: boolean;
-            /**
-             * The values available for the ABAC attribute.
-             *
-             * @remarks
-             * [Api set: WordApi BETA (PREVIEW ONLY)]
-             * @beta
-             */
-            values?: boolean;
         }
         /**
          * Represents the collection of {@link Word.SensitivityLabelDetails} objects.
@@ -73139,6 +72991,8 @@ export declare namespace Word {
             *
             * @remarks
             * [Api set: WordApiDesktop 1.2]
+            *
+            * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
             */
             body?: Word.Interfaces.BodyLoadOptions;
             /**
@@ -73413,6 +73267,8 @@ export declare namespace Word {
             *
             * @remarks
             * [Api set: WordApiDesktop 1.2]
+            *
+            * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
             */
             body?: Word.Interfaces.BodyLoadOptions;
             /**
@@ -73689,6 +73545,8 @@ export declare namespace Word {
              *
              * @remarks
              * [Api set: WordApiDesktop 1.2]
+             *
+             * Note: Getting this property doesn't modify the document. Unlike the `body` property of {@link Word.Shape}, it doesn't create a text story on a shape that doesn't already contain text.
              */
             hasText?: boolean;
             /**
