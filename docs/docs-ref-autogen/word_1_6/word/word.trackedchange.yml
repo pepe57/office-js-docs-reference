@@ -31,7 +31,12 @@ remarks: |-
     nextTrackedChange.load(["author", "date", "text", "type"]);
     await context.sync();
 
-    console.log(nextTrackedChange);
+    console.log("Next tracked change:", {
+      author: nextTrackedChange.author,
+      date: nextTrackedChange.date,
+      text: nextTrackedChange.text,
+      type: nextTrackedChange.type,
+    });
   });
   ```
 
@@ -123,11 +128,9 @@ methods:
         const body: Word.Body = context.document.body;
         const trackedChanges: Word.TrackedChangeCollection = body.getTrackedChanges();
         const trackedChange: Word.TrackedChange = trackedChanges.getFirst();
-        trackedChange.load();
+        trackedChange.accept();
         await context.sync();
 
-        console.log("First tracked change:", trackedChange);
-        trackedChange.accept();
         console.log("Accepted the first tracked change.");
       });
       ```
@@ -167,7 +170,12 @@ methods:
         nextTrackedChange.load(["author", "date", "text", "type"]);
         await context.sync();
 
-        console.log(nextTrackedChange);
+        console.log("Next tracked change:", {
+          author: nextTrackedChange.author,
+          date: nextTrackedChange.date,
+          text: nextTrackedChange.text,
+          type: nextTrackedChange.type,
+        });
       });
       ```
 
@@ -216,7 +224,7 @@ methods:
         range.load();
         await context.sync();
 
-        console.log("range.text: " + range.text);
+        console.log(`Tracked change range text: ${range.text}`);
       });
       ```
 
@@ -311,11 +319,9 @@ methods:
         const body: Word.Body = context.document.body;
         const trackedChanges: Word.TrackedChangeCollection = body.getTrackedChanges();
         const trackedChange: Word.TrackedChange = trackedChanges.getFirst();
-        trackedChange.load();
+        trackedChange.reject();
         await context.sync();
 
-        console.log("First tracked change:", trackedChange);
-        trackedChange.reject();
         console.log("Rejected the first tracked change.");
       });
       ```

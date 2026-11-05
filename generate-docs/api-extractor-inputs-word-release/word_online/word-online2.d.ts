@@ -832,6 +832,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -863,6 +865,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.1]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted.
          * @param insertLocation - The value must be `replace`, `start`, or `end`.
@@ -3828,6 +3832,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -3859,6 +3865,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.1]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted in to the content control.
          * @param insertLocation - The value must be `replace`, `start`, or `end`. `replace` cannot be used with `richTextTable` and `richTextTableRow` content controls.
@@ -5531,13 +5539,15 @@ export declare namespace Word {
         importStylesFromJson(stylesJson: string, importedStylesConflictBehavior?: "Ignore" | "Overwrite" | "CreateNew"): OfficeExtension.ClientResult<string[]>;
         /**
          * Inserts a document into the target document at a specific location with additional properties.
-                    Headers, footers, watermarks, and other section properties are copied by default.
-                    The maximum size of the document being inserted is 4 MB.
+                     Headers, footers, watermarks, and other section properties are copied by default.
+                     The maximum size of the document being inserted is 4 MB.
          *
          * @remarks
          * [Api set: WordApi 1.5]
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
+         *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * Document settings aren't preserved when inserting a document.
          *
@@ -5889,13 +5899,15 @@ export declare namespace Word {
         getStyles(): Word.StyleCollection;
         /**
          * Inserts a document into the target document at a specific location with additional properties.
-                    Headers, footers, watermarks, and other section properties are copied by default.
-                    The maximum size of the document being inserted is 4 MB.
+                     Headers, footers, watermarks, and other section properties are copied by default.
+                     The maximum size of the document being inserted is 4 MB.
          *
          * @remarks
          * [Api set: WordApiHiddenDocument 1.5]
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
+         *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * Document settings aren't preserved when inserting a document.
          *
@@ -7439,6 +7451,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -7470,6 +7484,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.2]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted.
          * @param insertLocation - The value must be `before` or `after`.
@@ -9361,6 +9377,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -9412,6 +9430,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.1]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted in the paragraph.
          * @param insertLocation - The value must be `replace`, `start`, or `end`.
@@ -10374,6 +10394,8 @@ export declare namespace Word {
          *
          * Insertion isn't supported if the document being inserted contains an ActiveX control (likely in a form field). Consider replacing such a form field with a content control or other option appropriate for your scenario.
          *
+         * Insertion isn't supported if the document being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
+         *
          * Document settings aren't preserved when inserting a document.
          *
          * @param base64File - The Base64-encoded content of a .docx file.
@@ -10434,6 +10456,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApi 1.1]
+         *
+         * Insertion isn't supported if the content being inserted contains linked or external content. If it does, this method returns an `InvalidArgument` error.
          *
          * @param ooxml - The OOXML to be inserted.
          * @param insertLocation - The value must be `replace`, `start`, `end`, `before`, or `after`.
@@ -13960,6 +13984,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApiDesktop 1.2]
+         *
+         * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
          */
         readonly body: Word.Body;
         /**
@@ -14681,6 +14707,8 @@ export declare namespace Word {
          *
          * @remarks
          * [Api set: WordApiDesktop 1.2]
+         *
+         * Note: Getting this property doesn't modify the document. Unlike the `body` property of {@link Word.Shape}, it doesn't create a text story on a shape that doesn't already contain text.
          */
         readonly hasText: boolean;
         /**
@@ -16621,6 +16649,24 @@ export declare namespace Word {
          */
         contentControlAdded = "ContentControlAdded",
         /**
+         * AnnotationAdded represents the event an annotation has been added to the document.
+         * @remarks
+         * [Api set: WordApiOnline 1.1]
+         */
+        annotationAdded = "AnnotationAdded",
+        /**
+         * AnnotationChanged represents the event an annotation has been updated in the document.
+         * @remarks
+         * [Api set: WordApiOnline 1.1]
+         */
+        annotationChanged = "AnnotationChanged",
+        /**
+         * AnnotationDeleted represents the event an annotation has been deleted from the document.
+         * @remarks
+         * [Api set: WordApiOnline 1.1]
+         */
+        annotationDeleted = "AnnotationDeleted",
+        /**
          * Represents that a content control has been entered.
          * @remarks
          * [Api set: WordApi 1.5]
@@ -16714,7 +16760,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -16743,7 +16789,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -16772,7 +16818,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -16801,7 +16847,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -16830,7 +16876,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -16860,7 +16906,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.5]
          */
-        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        eventType: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the content control IDs.
          *
@@ -16896,7 +16942,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.6]
          */
-        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the unique IDs of the involved paragraphs. IDs are in standard 8-4-4-4-12 GUID format without curly braces and differ across sessions and coauthors.
          *
@@ -16925,7 +16971,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.6]
          */
-        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the unique IDs of the involved paragraphs. IDs are in standard 8-4-4-4-12 GUID format without curly braces and differ across sessions and coauthors.
          *
@@ -16954,7 +17000,7 @@ export declare namespace Word {
          * @remarks
          * [Api set: WordApi 1.6]
          */
-        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
+        type: Word.EventType | "ContentControlDeleted" | "ContentControlSelectionChanged" | "ContentControlDataChanged" | "ContentControlAdded" | "AnnotationAdded" | "AnnotationChanged" | "AnnotationDeleted" | "ContentControlEntered" | "ContentControlExited" | "ParagraphAdded" | "ParagraphChanged" | "ParagraphDeleted" | "AnnotationClicked" | "AnnotationHovered" | "AnnotationInserted" | "AnnotationRemoved" | "AnnotationPopupAction";
         /**
          * Gets the unique IDs of the involved paragraphs. IDs are in standard 8-4-4-4-12 GUID format without curly braces and differ across sessions and coauthors.
          *
@@ -25799,13 +25845,6 @@ export declare namespace Word {
         /** The request context associated with the object. This connects the add-in's process to the Office host application's process. */
         context: RequestContext;
         /**
-         * Gets a `ColorFormat` object that represents the background color for a patterned line.
-         *
-         * @remarks
-         * [Api set: WordApiDesktop 1.3]
-         */
-        readonly backgroundColor: Word.ColorFormat;
-        /**
          * Gets a `ColorFormat` object that represents the foreground color for the line.
          *
          * @remarks
@@ -25813,54 +25852,12 @@ export declare namespace Word {
          */
         readonly foregroundColor: Word.ColorFormat;
         /**
-         * Specifies the length of the arrowhead at the beginning of the line.
-         *
-         * @remarks
-         * [Api set: WordApiDesktop 1.3]
-         */
-        beginArrowheadLength: Word.ArrowheadLength | "Mixed" | "Short" | "Medium" | "Long";
-        /**
-         * Specifies the style of the arrowhead at the beginning of the line.
-         *
-         * @remarks
-         * [Api set: WordApiDesktop 1.3]
-         */
-        beginArrowheadStyle: Word.ArrowheadStyle | "Mixed" | "None" | "Triangle" | "Open" | "Stealth" | "Diamond" | "Oval";
-        /**
-         * Specifies the width of the arrowhead at the beginning of the line.
-         *
-         * @remarks
-         * [Api set: WordApiDesktop 1.3]
-         */
-        beginArrowheadWidth: Word.ArrowheadWidth | "Mixed" | "Narrow" | "Medium" | "Wide";
-        /**
          * Specifies the dash style for the line.
          *
          * @remarks
          * [Api set: WordApiDesktop 1.3]
          */
         dashStyle: Word.LineDashStyle | "Mixed" | "Solid" | "SquareDot" | "RoundDot" | "Dash" | "DashDot" | "DashDotDot" | "LongDash" | "LongDashDot" | "LongDashDotDot" | "SysDash" | "SysDot" | "SysDashDot";
-        /**
-         * Specifies the length of the arrowhead at the end of the line.
-         *
-         * @remarks
-         * [Api set: WordApiDesktop 1.3]
-         */
-        endArrowheadLength: Word.ArrowheadLength | "Mixed" | "Short" | "Medium" | "Long";
-        /**
-         * Specifies the style of the arrowhead at the end of the line.
-         *
-         * @remarks
-         * [Api set: WordApiDesktop 1.3]
-         */
-        endArrowheadStyle: Word.ArrowheadStyle | "Mixed" | "None" | "Triangle" | "Open" | "Stealth" | "Diamond" | "Oval";
-        /**
-         * Specifies the width of the arrowhead at the end of the line.
-         *
-         * @remarks
-         * [Api set: WordApiDesktop 1.3]
-         */
-        endArrowheadWidth: Word.ArrowheadWidth | "Mixed" | "Narrow" | "Medium" | "Wide";
         /**
          * Specifies if to draw lines inside a shape.
          *
@@ -25875,13 +25872,6 @@ export declare namespace Word {
          * [Api set: WordApiDesktop 1.3]
          */
         isVisible: boolean;
-        /**
-         * Specifies the pattern applied to the line.
-         *
-         * @remarks
-         * [Api set: WordApiDesktop 1.3]
-         */
-        pattern: Word.PatternType | "Mixed" | "Percent5" | "Percent10" | "Percent20" | "Percent25" | "Percent30" | "Percent40" | "Percent50" | "Percent60" | "Percent70" | "Percent75" | "Percent80" | "Percent90" | "DarkHorizontal" | "DarkVertical" | "DarkDownwardDiagonal" | "DarkUpwardDiagonal" | "SmallCheckerBoard" | "Trellis" | "LightHorizontal" | "LightVertical" | "LightDownwardDiagonal" | "LightUpwardDiagonal" | "SmallGrid" | "DottedDiamond" | "WideDownwardDiagonal" | "WideUpwardDiagonal" | "DashedUpwardDiagonal" | "DashedDownwardDiagonal" | "NarrowVertical" | "NarrowHorizontal" | "DashedVertical" | "DashedHorizontal" | "LargeConfetti" | "LargeGrid" | "HorizontalBrick" | "LargeCheckerBoard" | "SmallConfetti" | "ZigZag" | "SolidDiamond" | "DiagonalBrick" | "OutlinedDiamond" | "Plaid" | "Sphere" | "Weave" | "DottedGrid" | "Divot" | "Shingle" | "Wave" | "Horizontal" | "Vertical" | "Cross" | "DownwardDiagonal" | "UpwardDiagonal" | "DiagonalCross";
         /**
          * Specifies the line format style.
          *
@@ -34173,6 +34163,8 @@ export declare namespace Word {
             *
             * @remarks
             * [Api set: WordApiDesktop 1.2]
+            *
+            * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
             */
             body?: Word.Interfaces.BodyUpdateData;
             /**
@@ -35239,13 +35231,6 @@ export declare namespace Word {
         /** An interface for updating data on the `LineFormat` object, for use in `lineFormat.set({ ... })`. */
         export interface LineFormatUpdateData {
             /**
-            * Gets a `ColorFormat` object that represents the background color for a patterned line.
-            *
-            * @remarks
-            * [Api set: WordApiDesktop 1.3]
-            */
-            backgroundColor?: Word.Interfaces.ColorFormatUpdateData;
-            /**
             * Gets a `ColorFormat` object that represents the foreground color for the line.
             *
             * @remarks
@@ -35253,54 +35238,12 @@ export declare namespace Word {
             */
             foregroundColor?: Word.Interfaces.ColorFormatUpdateData;
             /**
-             * Specifies the length of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadLength?: Word.ArrowheadLength | "Mixed" | "Short" | "Medium" | "Long";
-            /**
-             * Specifies the style of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadStyle?: Word.ArrowheadStyle | "Mixed" | "None" | "Triangle" | "Open" | "Stealth" | "Diamond" | "Oval";
-            /**
-             * Specifies the width of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadWidth?: Word.ArrowheadWidth | "Mixed" | "Narrow" | "Medium" | "Wide";
-            /**
              * Specifies the dash style for the line.
              *
              * @remarks
              * [Api set: WordApiDesktop 1.3]
              */
             dashStyle?: Word.LineDashStyle | "Mixed" | "Solid" | "SquareDot" | "RoundDot" | "Dash" | "DashDot" | "DashDotDot" | "LongDash" | "LongDashDot" | "LongDashDotDot" | "SysDash" | "SysDot" | "SysDashDot";
-            /**
-             * Specifies the length of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadLength?: Word.ArrowheadLength | "Mixed" | "Short" | "Medium" | "Long";
-            /**
-             * Specifies the style of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadStyle?: Word.ArrowheadStyle | "Mixed" | "None" | "Triangle" | "Open" | "Stealth" | "Diamond" | "Oval";
-            /**
-             * Specifies the width of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadWidth?: Word.ArrowheadWidth | "Mixed" | "Narrow" | "Medium" | "Wide";
             /**
              * Specifies if to draw lines inside a shape.
              *
@@ -35315,13 +35258,6 @@ export declare namespace Word {
              * [Api set: WordApiDesktop 1.3]
              */
             isVisible?: boolean;
-            /**
-             * Specifies the pattern applied to the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            pattern?: Word.PatternType | "Mixed" | "Percent5" | "Percent10" | "Percent20" | "Percent25" | "Percent30" | "Percent40" | "Percent50" | "Percent60" | "Percent70" | "Percent75" | "Percent80" | "Percent90" | "DarkHorizontal" | "DarkVertical" | "DarkDownwardDiagonal" | "DarkUpwardDiagonal" | "SmallCheckerBoard" | "Trellis" | "LightHorizontal" | "LightVertical" | "LightDownwardDiagonal" | "LightUpwardDiagonal" | "SmallGrid" | "DottedDiamond" | "WideDownwardDiagonal" | "WideUpwardDiagonal" | "DashedUpwardDiagonal" | "DashedDownwardDiagonal" | "NarrowVertical" | "NarrowHorizontal" | "DashedVertical" | "DashedHorizontal" | "LargeConfetti" | "LargeGrid" | "HorizontalBrick" | "LargeCheckerBoard" | "SmallConfetti" | "ZigZag" | "SolidDiamond" | "DiagonalBrick" | "OutlinedDiamond" | "Plaid" | "Sphere" | "Weave" | "DottedGrid" | "Divot" | "Shingle" | "Wave" | "Horizontal" | "Vertical" | "Cross" | "DownwardDiagonal" | "UpwardDiagonal" | "DiagonalCross";
             /**
              * Specifies the line format style.
              *
@@ -39988,6 +39924,8 @@ export declare namespace Word {
             *
             * @remarks
             * [Api set: WordApiDesktop 1.2]
+            *
+            * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
             */
             body?: Word.Interfaces.BodyData;
             /**
@@ -40298,6 +40236,8 @@ export declare namespace Word {
              *
              * @remarks
              * [Api set: WordApiDesktop 1.2]
+             *
+             * Note: Getting this property doesn't modify the document. Unlike the `body` property of {@link Word.Shape}, it doesn't create a text story on a shape that doesn't already contain text.
              */
             hasText?: boolean;
             /**
@@ -41392,13 +41332,6 @@ export declare namespace Word {
         /** An interface describing the data returned by calling `lineFormat.toJSON()`. */
         export interface LineFormatData {
             /**
-            * Gets a `ColorFormat` object that represents the background color for a patterned line.
-            *
-            * @remarks
-            * [Api set: WordApiDesktop 1.3]
-            */
-            backgroundColor?: Word.Interfaces.ColorFormatData;
-            /**
             * Gets a `ColorFormat` object that represents the foreground color for the line.
             *
             * @remarks
@@ -41406,54 +41339,12 @@ export declare namespace Word {
             */
             foregroundColor?: Word.Interfaces.ColorFormatData;
             /**
-             * Specifies the length of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadLength?: Word.ArrowheadLength | "Mixed" | "Short" | "Medium" | "Long";
-            /**
-             * Specifies the style of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadStyle?: Word.ArrowheadStyle | "Mixed" | "None" | "Triangle" | "Open" | "Stealth" | "Diamond" | "Oval";
-            /**
-             * Specifies the width of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadWidth?: Word.ArrowheadWidth | "Mixed" | "Narrow" | "Medium" | "Wide";
-            /**
              * Specifies the dash style for the line.
              *
              * @remarks
              * [Api set: WordApiDesktop 1.3]
              */
             dashStyle?: Word.LineDashStyle | "Mixed" | "Solid" | "SquareDot" | "RoundDot" | "Dash" | "DashDot" | "DashDotDot" | "LongDash" | "LongDashDot" | "LongDashDotDot" | "SysDash" | "SysDot" | "SysDashDot";
-            /**
-             * Specifies the length of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadLength?: Word.ArrowheadLength | "Mixed" | "Short" | "Medium" | "Long";
-            /**
-             * Specifies the style of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadStyle?: Word.ArrowheadStyle | "Mixed" | "None" | "Triangle" | "Open" | "Stealth" | "Diamond" | "Oval";
-            /**
-             * Specifies the width of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadWidth?: Word.ArrowheadWidth | "Mixed" | "Narrow" | "Medium" | "Wide";
             /**
              * Specifies if to draw lines inside a shape.
              *
@@ -41468,13 +41359,6 @@ export declare namespace Word {
              * [Api set: WordApiDesktop 1.3]
              */
             isVisible?: boolean;
-            /**
-             * Specifies the pattern applied to the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            pattern?: Word.PatternType | "Mixed" | "Percent5" | "Percent10" | "Percent20" | "Percent25" | "Percent30" | "Percent40" | "Percent50" | "Percent60" | "Percent70" | "Percent75" | "Percent80" | "Percent90" | "DarkHorizontal" | "DarkVertical" | "DarkDownwardDiagonal" | "DarkUpwardDiagonal" | "SmallCheckerBoard" | "Trellis" | "LightHorizontal" | "LightVertical" | "LightDownwardDiagonal" | "LightUpwardDiagonal" | "SmallGrid" | "DottedDiamond" | "WideDownwardDiagonal" | "WideUpwardDiagonal" | "DashedUpwardDiagonal" | "DashedDownwardDiagonal" | "NarrowVertical" | "NarrowHorizontal" | "DashedVertical" | "DashedHorizontal" | "LargeConfetti" | "LargeGrid" | "HorizontalBrick" | "LargeCheckerBoard" | "SmallConfetti" | "ZigZag" | "SolidDiamond" | "DiagonalBrick" | "OutlinedDiamond" | "Plaid" | "Sphere" | "Weave" | "DottedGrid" | "Divot" | "Shingle" | "Wave" | "Horizontal" | "Vertical" | "Cross" | "DownwardDiagonal" | "UpwardDiagonal" | "DiagonalCross";
             /**
              * Specifies the line format style.
              *
@@ -49049,6 +48933,8 @@ export declare namespace Word {
             *
             * @remarks
             * [Api set: WordApiDesktop 1.2]
+            *
+            * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
             */
             body?: Word.Interfaces.BodyLoadOptions;
             /**
@@ -49323,6 +49209,8 @@ export declare namespace Word {
             *
             * @remarks
             * [Api set: WordApiDesktop 1.2]
+            *
+            * Important: If the shape doesn't already contain text, getting this property creates a text story on the shape. This modifies the document, marks it as having unsaved changes, and adds an entry to the undo stack. To determine whether a shape contains text without modifying the document, get the `hasText` property of {@link Word.TextFrame} instead.
             */
             body?: Word.Interfaces.BodyLoadOptions;
             /**
@@ -49599,6 +49487,8 @@ export declare namespace Word {
              *
              * @remarks
              * [Api set: WordApiDesktop 1.2]
+             *
+             * Note: Getting this property doesn't modify the document. Unlike the `body` property of {@link Word.Shape}, it doesn't create a text story on a shape that doesn't already contain text.
              */
             hasText?: boolean;
             /**
@@ -50870,13 +50760,6 @@ export declare namespace Word {
              */
             $all?: boolean;
             /**
-            * Gets a `ColorFormat` object that represents the background color for a patterned line.
-            *
-            * @remarks
-            * [Api set: WordApiDesktop 1.3]
-            */
-            backgroundColor?: Word.Interfaces.ColorFormatLoadOptions;
-            /**
             * Gets a `ColorFormat` object that represents the foreground color for the line.
             *
             * @remarks
@@ -50884,54 +50767,12 @@ export declare namespace Word {
             */
             foregroundColor?: Word.Interfaces.ColorFormatLoadOptions;
             /**
-             * Specifies the length of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadLength?: boolean;
-            /**
-             * Specifies the style of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadStyle?: boolean;
-            /**
-             * Specifies the width of the arrowhead at the beginning of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            beginArrowheadWidth?: boolean;
-            /**
              * Specifies the dash style for the line.
              *
              * @remarks
              * [Api set: WordApiDesktop 1.3]
              */
             dashStyle?: boolean;
-            /**
-             * Specifies the length of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadLength?: boolean;
-            /**
-             * Specifies the style of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadStyle?: boolean;
-            /**
-             * Specifies the width of the arrowhead at the end of the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            endArrowheadWidth?: boolean;
             /**
              * Specifies if to draw lines inside a shape.
              *
@@ -50946,13 +50787,6 @@ export declare namespace Word {
              * [Api set: WordApiDesktop 1.3]
              */
             isVisible?: boolean;
-            /**
-             * Specifies the pattern applied to the line.
-             *
-             * @remarks
-             * [Api set: WordApiDesktop 1.3]
-             */
-            pattern?: boolean;
             /**
              * Specifies the line format style.
              *

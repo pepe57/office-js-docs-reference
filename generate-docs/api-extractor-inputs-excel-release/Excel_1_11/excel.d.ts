@@ -2775,7 +2775,8 @@ export declare namespace Excel {
         
         /**
          * Finds all occurrences of the given string based on the criteria specified and returns them as a `RangeAreas` object, comprising one or more rectangular ranges.
-         * Content in hidden worksheets is not returned.
+                    
+                    Content in hidden worksheets is not returned.
          *
          * @remarks
          * [Api set: ExcelApi 1.9]
@@ -2787,7 +2788,8 @@ export declare namespace Excel {
         findAll(text: string, criteria: Excel.WorksheetSearchCriteria): Excel.RangeAreas;
         /**
          * Finds all occurrences of the given string based on the criteria specified and returns them as a `RangeAreas` object, comprising one or more rectangular ranges.
-         * Content in hidden worksheets is not returned.
+                    
+                    Content in hidden worksheets is not returned.
          *
          * @remarks
          * [Api set: ExcelApi 1.9]
@@ -8978,29 +8980,32 @@ export declare namespace Excel {
          * Sets the bubble sizes for a chart series. Only works for bubble charts.
          *
          * @remarks
-         * [Api set: ExcelApi 1.7]
+         * [Api set: ExcelApi 1.7 for the Range overload; 1.21 for the formula string overload.]
          *
-         * @param sourceData - The `Range` object corresponding to the source data.
+         * @param sourceData - A `Range` or, in ApiSet 1.21, a string in en-US chart data-reference syntax. The string can contain a cell or table reference,
+         * a defined name, or a numeric literal or array. An empty string or `=` is invalid.
          */
-        setBubbleSizes(sourceData: Range): void;
+        setBubbleSizes(sourceData: Range | string): void;
         /**
          * Sets the values for a chart series. For scatter charts, it refers to y-axis values.
          *
          * @remarks
-         * [Api set: ExcelApi 1.7]
+         * [Api set: ExcelApi 1.7 for the Range overload; 1.21 for the formula string overload.]
          *
-         * @param sourceData - The `Range` object corresponding to the source data.
+         * @param sourceData - A `Range` or, in ApiSet 1.21, a string in en-US chart data-reference syntax. The string can contain a cell or table reference,
+         * a defined name, or a literal value or array. An empty string or `=` is invalid.
          */
-        setValues(sourceData: Range): void;
+        setValues(sourceData: Range | string): void;
         /**
          * Sets the values of the x-axis for a chart series.
          *
          * @remarks
-         * [Api set: ExcelApi 1.7]
+         * [Api set: ExcelApi 1.7 for the Range overload; 1.21 for the formula string overload.]
          *
-         * @param sourceData - The `Range` object corresponding to the source data.
+         * @param sourceData - A `Range` or, in ApiSet 1.21, a string in en-US chart data-reference syntax. The string can contain a cell or table reference,
+         * a defined name, or a literal value or array. An empty string or `=` clears the categories.
          */
-        setXAxisValues(sourceData: Range): void;
+        setXAxisValues(sourceData: Range | string): void;
         /**
          * Queues up a command to load the specified properties of the object. You must call `context.sync()` before reading the properties.
          *
@@ -24997,7 +25002,7 @@ export declare namespace Excel {
          * [Api set: ExcelApi 1.7]
          */
         worksheetMoved = "WorksheetMoved",
-                            }
+                                    }
     /**
      * @remarks
      * [Api set: ExcelApi 1.7]
@@ -28590,7 +28595,7 @@ export declare namespace Excel {
          *
          * @param dateText - Is text that represents a date in a Microsoft Excel date format, between 1/1/1900 or 1/1/1904 (depending on the workbook's date system) and 12/31/9999.
          */
-        datevalue(dateText: string | Excel.Range | Excel.RangeReference | Excel.FunctionResult<any>): FunctionResult<number>;
+        datevalue(dateText: string | number | Excel.Range | Excel.RangeReference | Excel.FunctionResult<any>): FunctionResult<number>;
         /**
          * Returns the day of the month, a number from 1 to 31.
          *
@@ -31371,6 +31376,7 @@ export declare namespace Excel {
         accessDenied = "AccessDenied",
         apiNotFound = "ApiNotFound",
         conflict = "Conflict",
+        dirtySupportingFormula = "DirtySupportingFormula",
         emptyChartSeries = "EmptyChartSeries",
         filteredRangeConflict = "FilteredRangeConflict",
         formulaLengthExceedsLimit = "FormulaLengthExceedsLimit",
@@ -31686,6 +31692,7 @@ export declare namespace Excel {
             /**
              * Represents the raw values of the specified range. The data returned could be a string, number, or Boolean. Cells that contain an error will return the error string.
                         If the returned value starts with a plus ("+"), minus ("-"), or equal sign ("="), Excel interprets this value as a formula.
+                        Locale-shaped strings (such as the date "19-8-2025" in nl-NL or fr-FR, format DD-MM-YYYY) are stored as text instead of as dates. To ensure dates are stored as dates, use a locale-aware API like `formulasLocal` or use a locale-neutral format like ISO (YYYY-MM-DD) or a numeric date serial.
              *
              * @remarks
              * [Api set: ExcelApi 1.1]
@@ -36926,6 +36933,7 @@ export declare namespace Excel {
             /**
              * Represents the raw values of the specified range. The data returned could be a string, number, or Boolean. Cells that contain an error will return the error string.
                         If the returned value starts with a plus ("+"), minus ("-"), or equal sign ("="), Excel interprets this value as a formula.
+                        Locale-shaped strings (such as the date "19-8-2025" in nl-NL or fr-FR, format DD-MM-YYYY) are stored as text instead of as dates. To ensure dates are stored as dates, use a locale-aware API like `formulasLocal` or use a locale-neutral format like ISO (YYYY-MM-DD) or a numeric date serial.
              *
              * @remarks
              * [Api set: ExcelApi 1.1]
@@ -43318,6 +43326,7 @@ export declare namespace Excel {
             /**
              * Represents the raw values of the specified range. The data returned could be a string, number, or Boolean. Cells that contain an error will return the error string.
                         If the returned value starts with a plus ("+"), minus ("-"), or equal sign ("="), Excel interprets this value as a formula.
+                        Locale-shaped strings (such as the date "19-8-2025" in nl-NL or fr-FR, format DD-MM-YYYY) are stored as text instead of as dates. To ensure dates are stored as dates, use a locale-aware API like `formulasLocal` or use a locale-neutral format like ISO (YYYY-MM-DD) or a numeric date serial.
              *
              * @remarks
              * [Api set: ExcelApi 1.1]
@@ -51107,6 +51116,7 @@ export declare namespace Excel {
             /**
              * For EACH ITEM in the collection: Represents the raw values of the specified range. The data returned could be a string, number, or Boolean. Cells that contain an error will return the error string.
                         If the returned value starts with a plus ("+"), minus ("-"), or equal sign ("="), Excel interprets this value as a formula.
+                        Locale-shaped strings (such as the date "19-8-2025" in nl-NL or fr-FR, format DD-MM-YYYY) are stored as text instead of as dates. To ensure dates are stored as dates, use a locale-aware API like `formulasLocal` or use a locale-neutral format like ISO (YYYY-MM-DD) or a numeric date serial.
              *
              * @remarks
              * [Api set: ExcelApi 1.1]
